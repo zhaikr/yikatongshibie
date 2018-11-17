@@ -32,16 +32,16 @@ def shibie(img):
             a = pj[0]
             b = pj[1]
             c = pj[2]
-            if a <= 1735 and a >= 158:
+            if a <= 1735 and a >= 158:  #调节参数 寻找特征点参数
                 if b <= 185 and b >= 175:
                     if c <= 105 and c >= 90:
                         y_list.append(y)
                         x_list.append(x)
 
-def panduan(i,j,m,n,img):
+def panduan(i,j,m,n,img): #获取特征区域x,y最大值和最小值
     x_board = i-j
     y_board = m-n
-    if x_board > y_board:
+    if x_board > y_board:  #判断图片的方向如果相反 进行图片旋转
         img = Image.open(lujing)
         img = img.rotate(270, expand=True)
         img.save(lujing)
@@ -62,10 +62,10 @@ def xuehaoshibie(img):
     ymax = max(y_list)
     ymin = min(y_list)
     panduan(xmax,xmin,ymax,ymin,img)
-    bili = (xmax-xmin)//365
+    bili = (xmax-xmin)//365 #图片的矩阵比例
     if bili == 0:
         bili = 1
-    y_tezheng = (ymax+ymin)//2
+    y_tezheng = (ymax+ymin)//2  
     x_xhmax = xmin - 220*bili
     x_xhmin = xmin - 550*bili
     y_xhmin = ymin - 750*bili
